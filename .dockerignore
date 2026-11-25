@@ -1,0 +1,85 @@
+
+# Git
+.git/
+.gitignore
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Local configurations
+.vscode/
+.sf/
+.sfdx/
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Datasets
+dataset/
+ml-model/dataset/
+
+# Trained models
+*.keras
+*.h5
+*.hdf5
+*.ckpt
+
+# Training notebooks
+ml-model/notebooks/
+ml-model/gradcam_outputs/
+
+# Generated outputs
+backend/outputs/
+
+# Documentation and reports
+reports/
+assests/
+
+# Logs and temporary files
+*.log
+*.tmp
+temp/
+
+# Training environment
+requirements-training.txt
+test_environment.py
+# Model evaluation artifacts
+ml-model/evaluation/
+ml-model/saved_models/
+
+# Training source files
+ml-model/models/
+ml-model/config/
+ml-model/preprocessing/
+
+# Local testing scripts
+test_validator.py
+
+# Additional cache files
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# Additional model formats
+*.ckpt.*
+*.onnx
+*.tflite
+*.safetensors
+
+# Additional Python cache
+*.pyd
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini

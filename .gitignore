@@ -1,0 +1,99 @@
+
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Trained Model Files
+*.h5
+*.keras
+*.ckpt
+*.ckpt.*
+*.hdf5
+
+# Dataset
+ml-model/dataset/
+/dataset/
+
+# Generated Grad-CAM Images and Reports
+backend/outputs/*
+!backend/outputs/.gitkeep
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+
+# Environment Variables and Secrets
+.env
+.env.*
+!.env.example
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Testing and Cache
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Python Build Files
+build/
+dist/
+*.egg-info/
+
+# Deployment Environments
+# Salesforce CLI Configuration
+.sf/
+.sfdx/
+
+# Additional Python Cache
+*.pyo
+*.pyd
+
+# Local Secrets
+*.pem
+*.key
+
+# Windows Alternate Data Stream Files
+*:Zone.Identifier
+*.Zone.Identifier
+# Additional trained model formats
+*.onnx
+*.tflite
+*.safetensors
+*.weights
+
+# Local reports and assets
+/reports/
+/assests/
+
+# Local manual evaluation results
+/ml-model/evaluation/retinal_validator/manual_test_results.csv
+/ml-model/evaluation/retinal_validator/real_world_test_results.csv
+
+# Additional coverage files
+.coverage.*
+htmlcov/
+
+# Local operating system files
+*.swp
+*.bak

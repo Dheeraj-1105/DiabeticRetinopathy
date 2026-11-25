@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+```
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    RetinaAI | Diabetic Retinopathy Detection
+</title>
+
+<link
+    rel="stylesheet"
+    href="style.css"
+>
+```
+
+</head>
+
+<body>
+
+```
+<div class="container">
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="header">
+
+        <div class="brand-area">
+
+            <div class="brand-icon">
+                👁
+            </div>
+
+            <div>
+
+                <h1>
+                    RetinaAI
+                </h1>
+
+                <p>
+                    AI-Powered Diabetic Retinopathy Detection
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                System Ready
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         INTRODUCTION
+         ===================================================== -->
+
+    <section class="intro-section">
+
+        <div class="intro-content">
+
+            <span class="eyebrow">
+                AI-ASSISTED RETINAL SCREENING
+            </span>
+
+            <h2>
+                Intelligent Retinal Image Analysis
+            </h2>
+
+            <p>
+                Analyze retinal fundus images using a deep learning
+                model to estimate diabetic retinopathy severity
+                across five clinical stages.
+            </p>
+
+        </div>
+
+
+        <!-- MODEL INFORMATION -->
+
+        <div class="model-info">
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    AI Model
+                </span>
+
+                <strong>
+                    ResNet50
+                </strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Classification
+                </span>
+
+                <strong>
+                    5 Classes
+                </strong>
+
+            </div>
+
+            <div class="info-item">
+
+                <span class="info-label">
+                    Input
+                </span>
+
+                <strong>
+                    Fundus Image
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+<p class="privacy-notice">
+    This application is an educational AI screening prototype.
+    Upload only authorized, de-identified retinal fundus images.
+    Do not upload confidential patient information.
+    Results are not a substitute for professional medical diagnosis.
+</p>
+    <!-- =====================================================
+         UPLOAD / ANALYSIS CARD
+         ===================================================== -->
+
+    <main class="card">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h2>
+                        Retinal Image Analysis
+                    </h2>
+
+                    <p class="description">
+                        Upload a retinal fundus image to begin
+                        AI-assisted diabetic retinopathy assessment.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- UPLOAD + PREVIEW -->
+
+        <div class="upload-section">
+
+            <!-- Upload -->
+
+            <div class="upload-panel">
+
+                <label
+                    for="imageInput"
+                    class="upload-label"
+                >
+
+                    <span class="upload-icon">
+                        📁
+                    </span>
+
+                    <span class="upload-title">
+                        Choose Retinal Image
+                    </span>
+
+                    <span class="upload-description">
+                        JPG, JPEG or PNG
+                    </span>
+
+                </label>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept=".jpg,.jpeg,.png"
+                >
+
+                <p id="fileName">
+                    No image selected
+                </p>
+
+            </div>
+
+
+            <!-- Preview -->
+
+            <div
+                id="previewContainer"
+                class="preview-container hidden"
+            >
+
+                <div class="preview-header">
+
+                    <h3>
+                        Selected Fundus Image
+                    </h3>
+
+                    <span class="preview-status">
+                        Ready
+                    </span>
+
+                </div>
+
+                <img
+                    id="imagePreview"
+                    src=""
+                    alt="Selected retinal fundus image"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- ANALYZE BUTTON -->
+
+        <div
+            id="analyzeButton"
+            class="analyze-button"
+            role="button"
+            tabindex="0"
+        >
+
+            <span class="button-icon">
+                ✦
+            </span>
+
+            Analyze Retinal Image
+
+        </div>
+
+
+        <!-- LOADING -->
+
+        <div
+            id="loading"
+            class="loading hidden"
+        >
+
+            <p>
+                Analyzing retinal image...
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             RESULTS
+             ================================================= -->
+
+        <section
+            id="results"
+            class="results hidden"
+        >
+
+            <div class="results-heading">
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h2>
+                        AI Analysis Results
+                    </h2>
+
+                    <p>
+                        Model prediction and explainability
+                        information generated from the uploaded image.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 PREDICTION SUMMARY
+                 ============================================= -->
+
+            <div class="result-summary">
+
+                <!-- Severity -->
+
+                <div class="prediction-card">
+
+                    <span class="result-label">
+                        PREDICTED SEVERITY
+                    </span>
+
+                    <h3 id="severity">
+                        -
+                    </h3>
+
+                    <p>
+                        AI-estimated diabetic retinopathy stage
+                    </p>
+
+                </div>
+
+
+                <!-- Confidence -->
+
+                <div class="metric-card">
+
+                    <span class="result-label">
+                        MODEL CONFIDENCE
+                    </span>
+
+                    <strong id="confidence">
+                        -
+                    </strong>
+
+                    <p>
+                        Highest predicted class probability
+                    </p>
+
+                </div>
+
+
+                <!-- Model -->
+
+                <div class="metric-card">
+
+                    <span class="result-label">
+                        ANALYSIS MODEL
+                    </span>
+
+                    <strong>
+                        ResNet50
+                    </strong>
+
+                    <p>
+                        ImageNet-pretrained CNN
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 CLASS PROBABILITIES
+                 ============================================= -->
+
+            <div class="probabilities">
+
+                <div class="subsection-heading">
+
+                    <div>
+
+                        <h3>
+                            Class Probabilities
+                        </h3>
+
+                        <p>
+                            Prediction probability across all
+                            diabetic retinopathy severity classes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div id="probabilityList">
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 EXPLAINABILITY
+                 ============================================= -->
+
+            <div class="gradcam-section">
+
+                <div class="subsection-heading">
+
+                    <div>
+
+                        <span class="explainability-badge">
+                            MODEL EXPLAINABILITY
+                        </span>
+
+                        <h3>
+                            Grad-CAM Visualization
+                        </h3>
+
+                        <p>
+                            Highlighted regions indicate image areas
+                            that contributed to the model's prediction.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="gradcam-container">
+
+                    <div class="gradcam-image-wrapper">
+
+                        <img
+                            id="gradcamImage"
+                            src=""
+                            alt="Grad-CAM visualization showing model attention"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="explainability-note">
+
+                    <strong>
+                        How to interpret this:
+                    </strong>
+
+                    <span>
+                        Warmer regions represent areas receiving
+                        stronger activation from the model during
+                        prediction.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 RECOMMENDATIONS
+                 ============================================= -->
+
+            <div class="recommendations">
+
+                <div class="subsection-heading">
+
+                    <div>
+
+                        <span class="recommendation-badge">
+                            PREVENTION & CARE
+                        </span>
+
+                        <h3>
+                            Prevention & Recommendations
+                        </h3>
+
+                        <p>
+                            General educational guidance based on
+                            the predicted severity class.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <ul id="recommendationList">
+                </ul>
+
+            </div>
+
+
+            <!-- =============================================
+                 DISCLAIMER
+                 ============================================= -->
+
+            <div class="disclaimer">
+
+                <div class="disclaimer-title">
+                    ⚠ Important Medical Notice
+                </div>
+
+                <p id="disclaimer">
+                </p>
+
+            </div>
+            <!-- Report Actions -->
+
+            <div class="report-actions">
+
+                <button
+                    id="printReportButton"
+                    class="report-button primary-report-button"
+                    type="button"
+                >
+                    🖨 Print / Save Report
+                </button>
+
+                <button
+                    id="newAnalysisButton"
+                    class="report-button secondary-report-button"
+                    type="button"
+                >
+                    ↻ New Analysis
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-brand">
+            RetinaAI
+        </div>
+
+        <p>
+            AI-Powered Diabetic Retinopathy Detection System
+        </p>
+
+        <p>
+            AI-assisted educational and research application.
+            Not intended to replace professional medical diagnosis.
+        </p>
+
+    </footer>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script src="script.js"></script>
+```
+
+</body>
+
+</html>
