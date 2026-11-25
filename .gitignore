@@ -97,3 +97,5 @@ htmlcov/
 # Local operating system files
 *.swp
 *.bak
+# Hugging Face local download metadata
+.cache/

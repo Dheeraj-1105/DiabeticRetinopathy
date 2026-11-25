@@ -83,3 +83,5 @@ test_validator.py
 .DS_Store
 Thumbs.db
 desktop.ini
+# Hugging Face local download metadata
+.cache/
